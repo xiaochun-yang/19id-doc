@@ -1,0 +1,39 @@
+0x4e470x010x00S3300               6.4.0.19            0x000000000x00000000000000
+
+! The line above is the NSDP Text Configuration header. DO NOT EDIT THIS HEADER
+
+!Current Configuration:
+!
+!System Description "S3300-28X-PoE+ ProSAFE 24-Port Gigabit Stackable Smart Switch with PoE+ and 4 10G uplinks, 6.4.0.19, B1.0.0.10"
+!System Software Version "6.4.0.19"
+!System Up Time          "0 days 19 hrs 55 mins 53 secs"
+!Additional Packages     QOS,IPv6 Management,Stacking,Routing
+!Current SNTP Synchronized Time: SNTP Client Mode Is Disabled
+! 
+network protocol none
+network parms 10.19.2.45 255.255.255.0 10.19.2.251
+vlan database
+exit 
+configure
+stack 
+member 1 2 
+exit 
+ip name server 10.19.0.254 10.0.137.1 8.8.8.8
+slot 1/0 2 
+set slot power 1/0 
+no set slot disable 1/0 
+line console
+exit 
+line telnet
+exit 
+no spanning-tree
+! 
+interface 1/xg27
+no auto-negotiate
+speed 10G full-duplex
+exit 
+interface 1/xg28
+no auto-negotiate
+speed 10G full-duplex
+exit 
+exit 
